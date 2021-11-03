@@ -1,8 +1,8 @@
 import utils
 import random
 
-file_name = '../res/提取信息.xlsx'
-headers = ['学号', '名字', '种子', '签到']
+file_name = ''
+headers = []
 
 
 def shuffle(sheet, groups):

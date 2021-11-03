@@ -1,8 +1,8 @@
 import utils
 
 # 在引号内填入源文件的路径，包含后缀名
-file_name = '../res/湘大杯单打报名表.xlsx'
-headers = ['学号', '名字', '性别', '院系']
+file_name = ''
+headers = []
 
 
 # 简单地通过学号是否为12位判断学号是否有效
