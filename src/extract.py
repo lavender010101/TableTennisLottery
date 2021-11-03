@@ -54,7 +54,6 @@ def divide_by_gender(data):
 if __name__ == "__main__":
 
     sheets = utils.get_sheets(file_name)
-
     data = extract_data(sheets[0], headers)
 
     male, female = divide_by_gender(data)

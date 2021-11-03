@@ -1,6 +1,5 @@
 import utils
 import random
-# import xlrd
 
 file_name = '../res/提取信息.xlsx'
 headers = ['学号', '名字', '种子', '签到']
@@ -39,20 +38,16 @@ def divide_seeds(sheet, headers):
         if row[colums['签到']].value.upper() not in ['Y', 'YES']:
             continue
         if row[colums['种子']].value.upper() in ['Y', 'YES']:
-            # seed.append([cell.value for cell in row])
             seed.append([row[colums['学号']].value, row[colums['名字']].value])
         elif row[colums['种子']].value.upper() in ['N', 'NO']:
-            # unseed.append([cell.value for cell in row])
             unseed.append([row[colums['学号']].value, row[colums['名字']].value])
 
     return seed, unseed
 
 
 if __name__ == "__main__":
-    # male_groups = input("请输入男子分组数：")
-    # female_groups = input("请输入女子分组数：")
-    male_groups = 8
-    female_groups = 4
+    male_groups = input("请输入男子分组数：")
+    female_groups = input("请输入女子分组数：")
     male, female = utils.get_sheets(file_name)
 
     male_data = shuffle(male, male_groups)
