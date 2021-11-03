@@ -19,12 +19,12 @@ def shuffle(sheet, groups):
             group_maps[i % groups] = [items[i] + [i % groups + 1]]
 
     data_headers = ['学号', '姓名', '小组']
-    data = [data_headers]
+    data = []
     for group in group_maps.values():
+        data.append(data_headers)
         for item in group:
             data.append(item)
         data.append([])
-        data.append(data_headers)
 
     return data
 
@@ -53,4 +53,4 @@ if __name__ == "__main__":
     male_data = shuffle(male, male_groups)
     female_data = shuffle(female, female_groups)
 
-    utils.save_data('../res/分组名单.xls', ['男子', '女子'], [male_data, female_data])
+    utils.save_data('', ['男子', '女子'], [male_data, female_data])
