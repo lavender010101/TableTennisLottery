@@ -24,7 +24,7 @@ def shuffle(sheet, groups):
         for item in group:
             data.append(item)
         data.append([])
-        data.append([])
+        data.append(data_headers)
 
     return data
 
