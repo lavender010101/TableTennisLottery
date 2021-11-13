@@ -2,7 +2,7 @@ import utils
 import random
 
 file_name = ''
-headers = []
+headers = ['学号', '姓名', '种子', '签到']
 
 
 def shuffle(sheet, groups):
@@ -13,7 +13,7 @@ def shuffle(sheet, groups):
     rows = len(items)
     group_maps = {}
     for i in range(rows):
-        if i % groups in group_maps.keys():
+        if eval(i % groups) in group_maps.keys():
             group_maps[i % groups].append(items[i] + [i % groups + 1])
         else:
             group_maps[i % groups] = [items[i] + [i % groups + 1]]
@@ -38,16 +38,16 @@ def divide_seeds(sheet, headers):
         if row[colums['签到']].value.upper() not in ['Y', 'YES']:
             continue
         if row[colums['种子']].value.upper() in ['Y', 'YES']:
-            seed.append([row[colums['学号']].value, row[colums['名字']].value])
+            seed.append([row[colums['学号']].value, row[colums['姓名']].value])
         elif row[colums['种子']].value.upper() in ['N', 'NO']:
-            unseed.append([row[colums['学号']].value, row[colums['名字']].value])
+            unseed.append([row[colums['学号']].value, row[colums['姓名']].value])
 
     return seed, unseed
 
 
 if __name__ == "__main__":
-    male_groups = input("请输入男子分组数：")
-    female_groups = input("请输入女子分组数：")
+    male_groups = int(input("请输入男子分组数："))
+    female_groups = int(input("请输入女子分组数："))
     male, female = utils.get_sheets(file_name)
 
     male_data = shuffle(male, male_groups)
