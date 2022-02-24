@@ -1,7 +1,8 @@
 import utils
 import random
 
-file_name = ''
+input_file = '' # 此处文件名请与 extract.py 的输出文件保持一致
+output_file = '' # 分组结果的文件名
 headers = ['学号', '姓名', '种子', '签到']
 
 
@@ -13,7 +14,7 @@ def shuffle(sheet, groups):
     rows = len(items)
     group_maps = {}
     for i in range(rows):
-        if eval(i % groups) in group_maps.keys():
+        if int(i % groups) in group_maps.keys():
             group_maps[i % groups].append(items[i] + [i % groups + 1])
         else:
             group_maps[i % groups] = [items[i] + [i % groups + 1]]
@@ -48,9 +49,9 @@ def divide_seeds(sheet, headers):
 if __name__ == "__main__":
     male_groups = int(input("请输入男子分组数："))
     female_groups = int(input("请输入女子分组数："))
-    male, female = utils.get_sheets(file_name)
+    male, female = utils.get_sheets(input_file)
 
     male_data = shuffle(male, male_groups)
     female_data = shuffle(female, female_groups)
 
-    utils.save_data('', ['男子', '女子'], [male_data, female_data])
+    utils.save_data(output_file, ['男子', '女子'], [male_data, female_data])

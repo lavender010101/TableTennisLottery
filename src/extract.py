@@ -1,8 +1,9 @@
 import utils
 
 # 在引号内填入源文件的路径，包含后缀名
-file_name = ''
-headers = []
+input_file = '' # 需要进行提取的文件
+output_file = '' # 提取后输出文件的文件名
+headers = ['学号', '姓名', '学院', '性别']
 
 
 # 简单地通过学号是否为12位判断学号是否有效
@@ -53,9 +54,9 @@ def divide_by_gender(data):
 
 if __name__ == "__main__":
 
-    sheets = utils.get_sheets(file_name)
+    sheets = utils.get_sheets(input_file)
     data = extract_data(sheets[0], headers)
 
     male, female = divide_by_gender(data)
 
-    utils.save_data('../res/提取信息.xlsx', ['男子', '女子'], [male, female])
+    utils.save_data(output_file, ['男子', '女子'], [male, female])
